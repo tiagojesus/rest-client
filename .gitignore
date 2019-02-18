@@ -1,6 +1,9 @@
 .gradle
 /build/
-
+.idea
+/client/out/
+/core/out/
+/server/out/
 # Ignore Gradle GUI config
 gradle-app.setting
 
