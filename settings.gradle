@@ -9,4 +9,5 @@ rootProject.name = 'business-rest-client'
 include 'core'
 include 'client'
 include 'server'
+include 'feigh-client'
 

@@ -2,17 +2,16 @@ package com.tiagojesus.dev.BusinessRestClient.web;
 
 import com.tiagojesus.dev.business.core.model.BusinessNotification;
 import org.springframework.lang.Nullable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/")
 public class IndexController {
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping()
     public BusinessNotification index(){
         return new BusinessNotification("msg.cad.0001", "Mensage 0001: New info 00001");
     }
@@ -23,5 +22,17 @@ public class IndexController {
             return new BusinessNotification();
         }
         return notification;
+    }
+
+    @RequestMapping(path = "for/{owner}")
+    public List<BusinessNotification> from(@PathVariable String owner){
+        return Arrays.asList(
+                new BusinessNotification("10.01", "notification "+owner),
+                new BusinessNotification("10.02", "notification "+owner),
+                new BusinessNotification("10.03", "notification "+owner),
+                new BusinessNotification("10.04", "notification "+owner),
+                new BusinessNotification("10.05", "notification "+owner),
+                new BusinessNotification("10.06", "notification "+owner)
+        );
     }
 }
