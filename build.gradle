@@ -27,9 +27,11 @@ project(":core")
 project(':client') {
     dependencies {
         implementation project(':core')
-        implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-        implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+        implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.13.1'
+
         implementation 'com.google.code.gson:gson:2.8.5'
+
+        testImplementation("com.squareup.okhttp3:mockwebserver:3.13.1")
     }
 }
 

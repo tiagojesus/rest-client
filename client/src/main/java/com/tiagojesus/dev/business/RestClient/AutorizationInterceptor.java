@@ -13,8 +13,7 @@ public class AutorizationInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Interceptor.Chain chain) throws IOException {
-        System.out.println("AutorizationInterceptor inicio");
-                Request originalRequest = chain.request();
+        Request originalRequest = chain.request();
 
         Request newRequest = originalRequest.newBuilder()
                 .removeHeader("Authorization")
@@ -23,7 +22,7 @@ public class AutorizationInterceptor implements Interceptor {
                 .addHeader("User-Agent", user.getSystem())
                 .method(originalRequest.method(), originalRequest.body())
                 .build();
-        System.out.println("AutorizationInterceptor fim");
+
         return chain.proceed(newRequest);
     }
 }
