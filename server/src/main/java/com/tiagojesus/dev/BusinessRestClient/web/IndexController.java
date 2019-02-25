@@ -9,14 +9,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/")
+@CrossOrigin(origins = "*")
 public class IndexController {
-    @RequestMapping()
+    @RequestMapping(path = {"basic/", "form/"})
     public BusinessNotification index(){
         return new BusinessNotification("msg.cad.0001", "Mensage 0001: New info 00001");
     }
 
-    @RequestMapping( method = RequestMethod.POST)
+    @RequestMapping(path = {"basic/", "form/"}, method = RequestMethod.POST)
     public BusinessNotification post(@RequestBody @Nullable BusinessNotification notification){
         if(!Optional.ofNullable(notification).isPresent()){
             return new BusinessNotification();
@@ -24,7 +25,7 @@ public class IndexController {
         return notification;
     }
 
-    @RequestMapping(path = "for/{owner}")
+    @RequestMapping(path = {"basic/for/{owner}", "form/for/{owner}"})
     public List<BusinessNotification> from(@PathVariable String owner){
         return Arrays.asList(
                 new BusinessNotification("10.01", "notification "+owner),

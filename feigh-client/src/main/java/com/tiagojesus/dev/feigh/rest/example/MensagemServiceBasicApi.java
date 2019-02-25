@@ -10,16 +10,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import java.util.List;
 
-public interface MensagemServiceApi extends BasicServiceAPI {
+public interface MensagemServiceBasicApi extends BasicServiceAPI {
     @GET
-    @Path("/")
-    Response mensagemGet();
+    @Path("/api/basic/")
+    BusinessNotification mensagemGet();
 
     @POST
-    @Path("/")
+    @Path("/api/basic/")
     BusinessNotification mensagemPOST();
 
     @GET
-    @Path("/for/{owner}")
+    @Path("/api/basic/for/{owner}")
     List<BusinessNotification> notificationFor(@PathParam("owner") String owner);
 }
