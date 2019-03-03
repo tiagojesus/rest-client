@@ -34,7 +34,7 @@ public class WebSecurityConfig{
                 .withUser("admin").password("password") .roles("USER", "ADMIN");
     }
 
-//    @Configuration
+    @Configuration
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
         protected void configure(HttpSecurity http) throws Exception {
@@ -53,36 +53,36 @@ public class WebSecurityConfig{
             web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
         }
     }
-
-    @Configuration
-    @Order(1)
-    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-            http.csrf().disable()
-                    //.cors().disable()
-                    .authorizeRequests()
-
-                    .antMatchers(PERMIT_ALL_RESOURCE).permitAll()
-                    .antMatchers("/api/form/**").hasRole("API_FORM")
-                    .anyRequest().authenticated()
-                    .and()
-                        .formLogin()
-
-                    .and()
-                        .logout()
-                        .invalidateHttpSession(true)
-                        .clearAuthentication(true)
-                        .deleteCookies("JSESSIONID")
-                        .permitAll()
-
-                    .and();
-        }/* To allow Pre-flight [OPTIONS] request from browser */
-        @Override
-        public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-        }
-    }
+//
+//    @Configuration
+//    @Order(1)
+//    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+//        @Override
+//        protected void configure(HttpSecurity http) throws Exception {
+//            http.csrf().disable()
+//                    //.cors().disable()
+//                    .authorizeRequests()
+//
+//                    .antMatchers(PERMIT_ALL_RESOURCE).permitAll()
+//                    .antMatchers("/api/form/**").hasRole("API_FORM")
+//                    .anyRequest().authenticated()
+//                    .and()
+//                        .formLogin()
+//
+//                    .and()
+//                        .logout()
+//                        .invalidateHttpSession(true)
+//                        .clearAuthentication(true)
+//                        .deleteCookies("JSESSIONID")
+//                        .permitAll()
+//
+//                    .and();
+//        }/* To allow Pre-flight [OPTIONS] request from browser */
+//        @Override
+//        public void configure(WebSecurity web) throws Exception {
+//            web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+//        }
+//    }
 
 
     @Bean

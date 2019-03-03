@@ -4,6 +4,10 @@ import com.tiagojesus.dev.business.RestClient.RestUser;
 import com.tiagojesus.dev.business.RestClient.RestUserBasic;
 import com.tiagojesus.dev.business.RestClient.BusinessRestClient;
 import com.tiagojesus.dev.business.core.model.BusinessNotification;
+import com.tiagojesus.dev.feigh.rest.client.fluent.BusinessRestClientFluent;
+
+import static com.tiagojesus.dev.feigh.rest.client.fluent.BusinessRestClientFluent.clientRestWithBaseUrl;
+import static com.tiagojesus.dev.feigh.rest.client.fluent.UserRestClientFluent.forSystem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +22,11 @@ public class Main {
         final String url = LOCALHOST_URL;
 
         RestUser user = new RestUserBasic("user", "password", "App1");
+
+
+
+
+
 
         BusinessRestClient cliente = new BusinessRestClient(user);
         String texto = cliente.GET(url);

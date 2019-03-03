@@ -1,5 +1,7 @@
 package com.tiagojesus.dev.business.RestClient;
 
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

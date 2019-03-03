@@ -2,6 +2,8 @@ package com.tiagojesus.dev.feigh.rest.example;
 
 import com.tiagojesus.dev.business.core.model.BusinessNotification;
 import com.tiagojesus.dev.feigh.rest.client.BasicServiceAPI;
+import feign.Param;
+import feign.RequestLine;
 import feign.Response;
 
 import javax.ws.rs.GET;
@@ -12,21 +14,17 @@ import java.util.List;
 import java.util.Map;
 
 public interface MensagemServiceFormApi extends BasicServiceAPI {
-    @POST
-    @Path("/login")
+    @RequestLine("POST /login")
     Response login(LoginParam param);
 
-    @GET
-    @Path("/api/form/")
+    @RequestLine("GET /api/form/")
     BusinessNotification mensagemGet();
 
-    @POST
-    @Path("/api/form/")
+    @RequestLine("POST /api/form/")
     BusinessNotification mensagemPOST();
 
-    @GET
-    @Path("/api/form/for/{owner}")
-    List<BusinessNotification> notificationFor(@PathParam("owner") String owner);
+    @RequestLine("GET /api/form/for/{owner}")
+    List<BusinessNotification> notificationFor(@Param("owner") String owner);
 
     class LoginParam {
         private final String username;

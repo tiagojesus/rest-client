@@ -2,24 +2,20 @@ package com.tiagojesus.dev.feigh.rest.example;
 
 import com.tiagojesus.dev.business.core.model.BusinessNotification;
 import com.tiagojesus.dev.feigh.rest.client.BasicServiceAPI;
-import feign.Response;
+import feign.Param;
+import feign.RequestLine;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import java.util.List;
 
 public interface MensagemServiceBasicApi extends BasicServiceAPI {
-    @GET
-    @Path("/api/basic/")
+
+    @RequestLine("GET /api/basic/")
     BusinessNotification mensagemGet();
 
-    @POST
-    @Path("/api/basic/")
+
+    @RequestLine("POST /api/basic/")
     BusinessNotification mensagemPOST();
 
-    @GET
-    @Path("/api/basic/for/{owner}")
-    List<BusinessNotification> notificationFor(@PathParam("owner") String owner);
+        @RequestLine("GET /api/basic/for/{owner}")
+    List<BusinessNotification> notificationFor(@Param("owner") String owner);
 }

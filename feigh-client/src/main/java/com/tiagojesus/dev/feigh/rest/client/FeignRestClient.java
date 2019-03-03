@@ -22,7 +22,6 @@ public class FeignRestClient {
 
         builderApi = Feign.builder()
                 .client(new OkHttpClient())
-                .contract(new JAXRSContract())
                 .logger(new Logger.JavaLogger().appendToFile("kfkfk"))
                 .logLevel(Logger.Level.FULL)
                 .requestInterceptor(new ForwardedForInterceptor(this))
